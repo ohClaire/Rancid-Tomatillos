@@ -14,11 +14,20 @@ class App extends Component {
     };
   }
   componentDidMount = async () => {
-    const response = await fetch(
-      'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
-    );
-    const data = await response.json();
-    this.setState({ movies: data.movies });
+    try {
+      const response = await fetch(
+        'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
+      );
+      if (!response.ok) {
+        console.log(response.status);
+        throw new Error('Sorry, an error occured');
+      }
+      const data = await response.json();
+      this.setState({ movies: data.movies });
+    } catch (error) {
+      console.log(error.message);
+      this.setState({ error: error.message });
+    }
   };
 
   showMovie = (movieID) => {
