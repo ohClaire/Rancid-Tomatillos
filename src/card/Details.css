@@ -1,0 +1,21 @@
+.current-movie {
+  /* text-align: center; */
+  box-sizing: border-box;
+  border-radius: 0.5em;
+  padding: 10px;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+}
+
+.inner-poster-img {
+  width: 30%;
+  height: auto;
+  border-radius: 0.5em;
+}
+
+.close-movie {
+  position: absolute;
+  right: 17px;
+}
