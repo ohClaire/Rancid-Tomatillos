@@ -7,7 +7,6 @@ const Movies = ({ movies, showMovie }) => {
     return (
       <button className="movie-card-btn" key={movie.id}>
         <Card
-          key={movie.id}
           id={movie.id}
           title={movie.title}
           poster={movie.poster_path}

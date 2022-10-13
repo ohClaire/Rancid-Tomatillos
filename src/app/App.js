@@ -15,18 +15,12 @@ class App extends Component {
   }
   componentDidMount = async () => {
     try {
-      const response = await fetch(
-        'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
-      );
-      if (!response.ok) {
-        console.log(response.status);
-        throw new Error('Sorry, an error occured');
-      }
-      const data = await response.json();
-      this.setState({ movies: data.movies });
+      const movieList = await fetchData();
+      this.setState({ movies: movieList });
     } catch (error) {
-      console.log(error.message);
-      this.setState({ error: error.message });
+      this.setState({
+        error: 'There was a problem getting your data. Please try again.',
+      });
     }
   };
 
@@ -55,6 +49,11 @@ class App extends Component {
           <h1 className="heading">Rancid</h1>
           <h2 className="heading">Tomatillos</h2>
         </div>
+        {this.state.error ? (
+          <h2 className="error-message">{this.state.error}</h2>
+        ) : (
+          <Movies movies={this.state.movies} showMovie={this.showMovie} />
+        )}
         {this.state.movie ? (
           <Details
             id={this.state.movie.id}
