@@ -5,9 +5,8 @@ import Card from '../card/Card';
 const Movies = ({ movies, showMovie }) => {
   const movieCards = movies.map((movie) => {
     return (
-      <button>
+      <button key={movie.id}>
         <Card
-          key={movie.id}
           id={movie.id}
           title={movie.title}
           poster={movie.poster_path}
