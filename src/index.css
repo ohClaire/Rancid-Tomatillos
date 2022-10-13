@@ -1,8 +1,15 @@
 body {
- background-color: grey;
+  background-color: grey;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+button {
+  background-color: transparent;
+}
+
+button:hover {
 }
