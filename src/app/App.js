@@ -1,20 +1,28 @@
 import React, { Component } from 'react';
-import movieData from '../sample-data';
+//import movieData from '../sample-data';
 import Movies from '../movies/Movies';
 import Details from '../card/Details';
 import './App.css';
+import fetchData from '../api.js';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      movieData,
+      movies: [],
       movie: null,
     };
   }
+  componentDidMount = async () => {
+    const response = await fetch(
+      'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
+    );
+    const data = await response.json();
+    this.setState({ movies: data.movies });
+  };
 
   showMovie = (movieID) => {
-    const currentMovie = this.state.movieData.movies.find(
+    const currentMovie = this.state.movies.find(
       (movie) => movie.id === movieID
     );
     this.setState({ movie: currentMovie });
@@ -42,10 +50,7 @@ class App extends Component {
             closeMovie={this.closeMovie}
           />
         ) : (
-          <Movies
-            movies={this.state.movieData.movies}
-            showMovie={this.showMovie}
-          />
+          <Movies movies={this.state.movies} showMovie={this.showMovie} />
         )}
       </main>
     );
