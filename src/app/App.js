@@ -6,17 +6,19 @@ import './App.css';
 class App extends Component {
   constructor() {
     super();
-    this.state = movieData
+    this.state = movieData;
   }
 
   render() {
     return (
       <main>
-      <h1>Rancid Tomatillos</h1>
-      <Movies movies={this.state.movies}/>
+        <div className="container">
+          <h1 className="heading">Rancid</h1>
+          <h2 className="heading">Tomatillos</h2>
+        </div>
+        <Movies movies={this.state.movies} />
       </main>
     );
-
   }
 }
 

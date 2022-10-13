@@ -1,0 +1,12 @@
+.card {
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 0.5em;
+    padding: 10px;
+}
+
+.poster-img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5em;    
+}
