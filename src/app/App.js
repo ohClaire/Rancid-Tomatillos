@@ -30,11 +30,18 @@ class App extends Component {
     }
   };
 
-  showMovie = (movieID) => {
-    const currentMovie = this.state.movies.find(
-      (movie) => movie.id === movieID
+  showMovie = async (movieID) => {
+    // const currentMovie = this.state.movies.find(
+    //   (movie) => movie.id === movieID
+    // );
+    // this.setState({ movie: currentMovie });
+    console.log(movieID);
+    const currentMovie = await fetch(
+      `https://rancid-tomatillos.herokuapp.com/api/v2/movies/:movie_${movieID}`
     );
-    this.setState({ movie: currentMovie });
+    const data = await currentMovie.json();
+    this.setState({ movie: data.movies });
+    console.log('current', currentMovie);
   };
 
   closeMovie = () => {

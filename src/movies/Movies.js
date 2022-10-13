@@ -5,7 +5,7 @@ import Card from '../card/Card';
 const Movies = ({ movies, showMovie }) => {
   const movieCards = movies.map((movie) => {
     return (
-      <button>
+      <button className="movie-card-btn" key={movie.id}>
         <Card
           key={movie.id}
           id={movie.id}
