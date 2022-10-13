@@ -1,5 +1,5 @@
-import React from 'react';
-import './Movies.css';
+import React from 'react'
+import './Movies.css'
 import Card from '../card/Card'
 
 const Movies = ({ movies }) => {

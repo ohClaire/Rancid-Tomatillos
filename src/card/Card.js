@@ -4,11 +4,11 @@ import './Card.css';
 const Card = ({id, title, poster, backdrop, rating, release}) =>{
     return (
         <div className='card' >
-            <h1>{title}</h1>
-            <p className='rating'>{Math.round(rating)}</p>
+            <img className='poster-img' alt={`movie poster for ${title}`} src={poster}/>
+            <h3>{title}</h3>
+            <p className='rating'>{Math.round(rating)}/10</p>
             <p>{release}| Genre | Runtime</p>
-            <p>Overview: description</p>
-            <img></img>
+            <p>Overview: description</p>           
         </div>
     )
 }

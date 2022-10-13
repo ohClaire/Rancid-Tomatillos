@@ -5,16 +5,19 @@ import './App.css';
 
 class App extends Component {
   constructor() {
-    super();
+    super()
     this.state = movieData
   }
 
   render() {
     return (
-      <main>
-      <h1 className='heading'>Rancid Tomatillos</h1>       
+    <main>
+        <div className='container'>
+          <h1 className='heading'>Rancid</h1> 
+          <h2 className='heading'>Tomatillos</h2>                 
+        </div>
           <Movies movies={this.state.movies}/>       
-      </main>
+       </main>
     );
 
   }
