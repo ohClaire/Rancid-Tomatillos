@@ -12,12 +12,12 @@ const Details = ({ movieDetails, closeMovie }) => {
       <div className="movie-body">
         <h2 className="movie-title">{title}</h2>
         <div className="movie-details">
-          <p>
+          <h3>
             Rating: {average_rating.toFixed(2)}/10 | Released:
             {release_date.slice(0, 4)}
-          </p>
-          <p>Runtime: </p>
-          <p>Genre: </p>
+          </h3>
+          <h3>Runtime: </h3>
+          <h3>Genre: </h3>
         </div>
         <h3>Summary: </h3>
         <p>
