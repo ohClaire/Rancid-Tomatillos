@@ -77,21 +77,12 @@ class App extends Component {
     return (
       <main>
         <header className="header">
-          <img src={tomato} alt="tomato" className="tomato-icon" />
           <div className="container">
-            <h1 className="heading-title">Rancid</h1>
-            <h2 className="heading-title">Tomatillos</h2>
+            <h1 className="heading-title h1">Rancid</h1>
+            <h2 className="heading-title h2">Tomatillos</h2>
           </div>
-          <img src={tomato} alt="tomato" className="tomato-icon" />
         </header>
-        {this.state.movies.length ? (
-          content
-        ) : (
-          <img
-            src="https://cdn.dribbble.com/users/1464232/screenshots/3858781/media/155ab7dd1143751e6fcdefb7754e4a6d.gif"
-            alt="bouncing tomato"
-          />
-        )}
+        {this.state.movies.length && content}
       </main>
     );
   }
