@@ -1,10 +1,15 @@
-.heading {
-  text-align: center;
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
-.heading {
-  color: #fff;
-  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
-    0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+
+.heading-title {
+  text-align: center;
+  /* color: #fff; */
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px rgb(64, 178, 115),
+    0 0 42px rgb(0, 85, 255);
+  margin: 0px;
 }
 
 h1 {
@@ -13,7 +18,7 @@ h1 {
 }
 
 /* Flickering animation */
-@keyframes flicker {
+/* @keyframes flicker {
   0%,
   18%,
   22%,
@@ -30,12 +35,12 @@ h1 {
   55% {
     text-shadow: none;
   }
-}
+} */
 
 /* Additional styling */
 
 h2 {
-  font-size: 1.8rem;
+  font-size: 3.8rem;
 }
 
 body {
@@ -47,8 +52,8 @@ body {
 
 h1,
 h2 {
-  text-align: center;
-  text-transform: uppercase;
+  /* text-align: center; */
+  /* text-transform: uppercase; */
   font-weight: 400;
 }
 
