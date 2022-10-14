@@ -4,6 +4,7 @@ import Movies from '../movies/Movies';
 import Details from '../card/Details';
 import './App.css';
 import fetchData from '../api.js';
+import tomato from './tomato.png';
 
 class App extends Component {
   constructor() {
@@ -65,15 +66,7 @@ class App extends Component {
       content = <h2 className="error-message">{this.state.error}</h2>;
     } else if (this.state.movie) {
       content = (
-        <Details
-          id={this.state.movie.id}
-          title={this.state.movie.title}
-          poster={this.state.movie.poster_path}
-          backdrop={this.state.movie.backdrop_path}
-          rating={this.state.movie.average_rating}
-          release={this.state.movie.release_date}
-          closeMovie={this.closeMovie}
-        />
+        <Details movieDetails={this.state.movie} closeMovie={this.closeMovie} />
       );
     } else {
       content = (
@@ -83,17 +76,22 @@ class App extends Component {
 
     return (
       <main>
-        <div className="container">
-          <h1 className="heading">Rancid</h1>
-          <h2 className="heading">Tomatillos</h2>
-        </div>
-        {content}
-
-        {/* {this.state.error ? (
-          <h2 className="error-message">{this.state.error}</h2>
+        <header className="header">
+          <img src={tomato} alt="tomato" className="tomato-icon" />
+          <div className="container">
+            <h1 className="heading-title">Rancid</h1>
+            <h2 className="heading-title">Tomatillos</h2>
+          </div>
+          <img src={tomato} alt="tomato" className="tomato-icon" />
+        </header>
+        {this.state.movies.length ? (
+          content
         ) : (
-          <Movies movies={this.state.movies} showMovie={this.showMovie} />
-        )} */}
+          <img
+            src="https://cdn.dribbble.com/users/1464232/screenshots/3858781/media/155ab7dd1143751e6fcdefb7754e4a6d.gif"
+            alt="bouncing tomato"
+          />
+        )}
       </main>
     );
   }
