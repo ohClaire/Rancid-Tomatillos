@@ -1,5 +1,6 @@
 .current-movie {
   /* text-align: center; */
+  font-family: sans-serif;
   box-sizing: border-box;
   border-radius: 0.5em;
   padding: 10px;
@@ -7,6 +8,7 @@
   display: flex;
   justify-content: space-around;
   position: relative;
+  
 }
 
 .inner-poster-img {
