@@ -31,7 +31,7 @@ class App extends Component {
     this.setState({ movie: currentMovie });
   };
 
-  // showMovie = (movieID) => {
+  // showMovie = async (movieID) => {
   //   const currentMovie = this.state.movies.find(
   //     (movie) => movie.id === movieID
   //   );
