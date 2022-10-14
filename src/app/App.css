@@ -48,7 +48,6 @@
 } */
 
 /* Additional styling */
-
 body {
   font-family: 'PT Serif', serif;
   /* font-family: 'Yellowtail', sans-serif; */
@@ -62,6 +61,7 @@ body {
   padding: 150px;
 }
 
+/* breakpoints */
 @media only screen and (max-width: 500px) {
   .h1 {
     font-size: 3.4rem;

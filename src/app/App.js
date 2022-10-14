@@ -4,7 +4,6 @@ import Movies from '../movies/Movies';
 import Details from '../card/Details';
 import './App.css';
 import fetchData from '../api.js';
-import tomato from './tomato.png';
 
 class App extends Component {
   constructor() {
