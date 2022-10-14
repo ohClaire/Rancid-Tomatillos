@@ -1,37 +1,25 @@
 import React from 'react';
 import './Details.css';
 
-const Details = ({
-  id,
-  title,
-  poster,
-  backdrop,
-  rating,
-  release,
-  closeMovie,
-}) => {
-  // const divStyle = {
-  //   backgroundImage: 'url(' + backdrop + ')',
-  //   width: 100 + '%',
-  //   height: 100 + '%',
-  // };
+const Details = ({ movieDetails, closeMovie }) => {
+  const { id, poster_path, title, average_rating, release_date } = movieDetails;
 
   return (
-    <div className="current-movie">
+    <div className="current-movie" id={id}>
       <button className="close-movie" onClick={closeMovie}>
         ✕
       </button>
       <div className="body">
         <h2>{title}</h2>
         <p>
-          Rating: {rating.toFixed(2)}/10 | Released: {release} | Runtime: |
-          Genre:
+          Rating: {average_rating.toFixed(2)}/10 | Released:
+          {release_date.slice(0, 4)} | Runtime: | Genre:
         </p>
         <p>Movie Overview: </p>
       </div>
       <img
         className="inner-poster-img"
-        src={poster}
+        src={poster_path}
         alt={`poster of ${title} movie`}
       />
     </div>

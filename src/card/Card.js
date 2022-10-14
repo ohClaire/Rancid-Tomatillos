@@ -1,7 +1,7 @@
 import React from 'react';
 import './Card.css';
 
-const Card = ({ id, title, poster, backdrop, rating, release, onClick }) => {
+const Card = ({ title, poster, onClick }) => {
   return (
     <div className="card" onClick={onClick}>
       <img
@@ -12,6 +12,5 @@ const Card = ({ id, title, poster, backdrop, rating, release, onClick }) => {
     </div>
   );
 };
-//const backdropImg =  {background-img: URL(backdrop)}
 
 export default Card;
