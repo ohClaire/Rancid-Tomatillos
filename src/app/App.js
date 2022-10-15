@@ -79,8 +79,14 @@ class App extends Component {
         <header className="header">
           <div className="container">
             <h1 className="heading-title h1">Rancid</h1>
-            <h2 className="heading-title h2">Tomatillos</h2>
+            <h2 className="heading-title h2">
+              T
+              <img className="tomato-icon" src={tomato} alt="cartoon tomato" />
+              matill
+              <img className="tomato-icon" src={tomato} alt="cartoon tomato" />s
+            </h2>
           </div>
+          <div className="divider"></div>
         </header>
         {this.state.movies.length && content}
       </main>
