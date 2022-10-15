@@ -1,28 +1,83 @@
 .current-movie {
-  font-family: sans-serif;
+  font-family: 'PT Serif', serif;
   box-sizing: border-box;
   border-radius: 0.5em;
-  padding: 10px;
+  padding: 40px;
+  margin-top: 40px;
   background: black;
-  color:white;
-  display: flex;
-  justify-content: space-around;
+  color: white;
   position: relative;
+  display: flex;
+  flex: 0 1 0px;
+  flex-wrap: wrap;
 }
 
 .inner-poster-img {
-  width: 30%;
+  min-width: 260px;
+  max-width: 400px;
   height: auto;
-  border-radius: 0.5em;
+  border-radius: 16px;
+  object-fit: contain;
+  flex: 1 0 35%;
 }
 
-.close-movie {
+.close-btn {
   color: white;
+  font-size: 2rem;
+  border-radius: 4px;
   position: absolute;
   right: 17px;
-  
+  top: 16px;
 }
 
-.close-movie:hover {
-  background-color: rgba(25, 248, 103, 0.2);
+.close-btn:hover {
+  background-color: rgb(102, 158, 226);
+}
+
+.movie-title {
+  font-size: 3rem;
+}
+
+.movie-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-body {
+  padding-right: 60px;
+  flex-wrap: wrap;
+  flex: 1 1 0px;
+  min-width: 360px;
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-weight: 400;
+}
+
+@media only screen and (max-width: 400px) {
+  .current-movie {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+  }
+  .movie-title {
+    text-align: center;
+    font-size: 2.2rem;
+  }
+  .movie-details {
+    justify-content: center;
+  }
+  .movie-body {
+    font-size: 1.2rem;
+    padding: 0px;
+    min-width: 240px;
+  }
+  .inner-poster-img {
+    min-width: 200px;
+  }
+  .close-btn {
+    font-size: 1rem;
+  }
 }

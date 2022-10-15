@@ -3,13 +3,9 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'PT Serif', serif;
 }
 
 button {
   background-color: transparent;
-}
-
-button:hover {
 }
