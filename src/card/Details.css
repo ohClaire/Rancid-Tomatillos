@@ -2,7 +2,6 @@
   font-family: 'PT Serif', serif;
   box-sizing: border-box;
   border-radius: 0.5em;
-  padding: 40px;
   margin-top: 40px;
   background: black;
   color: white;
@@ -44,7 +43,7 @@
 }
 
 .movie-body {
-  padding-left: 60px;
+  padding-right: 60px;
   flex-wrap: wrap;
   flex: 1 1 0px;
   min-width: 360px;
