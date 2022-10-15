@@ -2,8 +2,17 @@ import React from 'react';
 import './Details.css';
 
 const Details = ({ movieDetails, closeMovie }) => {
-  const { id, poster_path, title, average_rating, release_date, runtime, overview, genres } = movieDetails;
-  
+  const {
+    id,
+    poster_path,
+    title,
+    average_rating,
+    release_date,
+    runtime,
+    overview,
+    genres,
+  } = movieDetails;
+
   return (
     <div className="current-movie" id={id}>
       <button className="close-btn" onClick={closeMovie}>

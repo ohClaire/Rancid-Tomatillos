@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import movieData from '../sample-data';
 import Movies from '../movies/Movies';
 import Details from '../card/Details';
 import './App.css';
@@ -25,38 +24,25 @@ class App extends Component {
     }
   };
 
-  // showMovie = (movieID) => {
-  //   const currentMovie = this.state.movies.find(
-  //     (movie) => movie.id === movieID
-  //   );
-  //   this.setState({ movie: currentMovie });
-  // };
-
   showMovie = async (movieID) => {
-  //   const currentMovie = this.state.movies.find(
-  //     (movie) => movie.id === movieID
-  //   );
-  //   this.setState({ movie: currentMovie });
-  // console.log(movieID);
-  let currentMovie
-  try {
-     currentMovie = await fetch(
-      `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieID}`
-    );
-    console.log(currentMovie);
-    if (currentMovie.status >= 500) {
-      console.log('inside if block');
-      throw new Error('something went wrong');
-    }   
-    const data = await currentMovie.json();
-    console.log('data' , data)
-    this.setState({ movie: data.movie });
-    console.log('current', this.state.movie);
-  } catch (error) {
-    console.log(error);
-    this.setState({ error: '500 error' });
-  }  
-  
+    let currentMovie;
+    try {
+      currentMovie = await fetch(
+        `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieID}`
+      );
+      console.log(currentMovie);
+      if (currentMovie.status >= 500) {
+        console.log('inside if block');
+        throw new Error('something went wrong');
+      }
+      const data = await currentMovie.json();
+      console.log('data', data);
+      this.setState({ movie: data.movie });
+      console.log('current', this.state.movie);
+    } catch (error) {
+      console.log(error);
+      this.setState({ error: '500 error' });
+    }
   };
 
   closeMovie = () => {
@@ -64,7 +50,6 @@ class App extends Component {
   };
 
   render() {
-
     let content;
     if (this.state.error) {
       content = <h2 className="error-message">{this.state.error}</h2>;
