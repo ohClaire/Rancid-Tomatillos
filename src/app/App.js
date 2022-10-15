@@ -25,42 +25,46 @@ class App extends Component {
     }
   };
 
-  showMovie = (movieID) => {
-    const currentMovie = this.state.movies.find(
-      (movie) => movie.id === movieID
-    );
-    this.setState({ movie: currentMovie });
-  };
+  // showMovie = (movieID) => {
+  //   const currentMovie = this.state.movies.find(
+  //     (movie) => movie.id === movieID
+  //   );
+  //   this.setState({ movie: currentMovie });
+  // };
 
-  // showMovie = async (movieID) => {
+  showMovie = async (movieID) => {
   //   const currentMovie = this.state.movies.find(
   //     (movie) => movie.id === movieID
   //   );
   //   this.setState({ movie: currentMovie });
   // console.log(movieID);
-  // try {
-  //   const currentMovie = await fetch(
-  //     `https://rancid-tomatillos.herokuapp.com/api/v2/movies/:movie_${movieID}`
-  //   );
-  //   console.log(currentMovie);
-  //   if (currentMovie.status >= 500) {
-  //     console.log('inside if block');
-  //     throw new Error('something went wrong');
-  //   }
-  //   const data = await currentMovie.json();
-  //   this.setState({ movie: data.movies });
-  // } catch (error) {
-  //   console.log(error);
-  //   this.setState({ error: '500 error' });
-  // }
-  //console.log('current', currentMovie);
-  // };
+  let currentMovie
+  try {
+     currentMovie = await fetch(
+      `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieID}`
+    );
+    console.log(currentMovie);
+    if (currentMovie.status >= 500) {
+      console.log('inside if block');
+      throw new Error('something went wrong');
+    }   
+    const data = await currentMovie.json();
+    console.log('data' , data)
+    this.setState({ movie: data.movie });
+    console.log('current', this.state.movie);
+  } catch (error) {
+    console.log(error);
+    this.setState({ error: '500 error' });
+  }  
+  
+  };
 
   closeMovie = () => {
     this.setState({ movie: null });
   };
 
   render() {
+
     let content;
     if (this.state.error) {
       content = <h2 className="error-message">{this.state.error}</h2>;
