@@ -88,7 +88,7 @@ class App extends Component {
         </header>
         <Route 
         exact path="/"  
-        render={() => {<Movies movies={this.state.movies} showMovie={this.showMovie} />;}} />
+        render={() => <Movies movies={this.state.movies}/>} />
       </main>
     );
   }
