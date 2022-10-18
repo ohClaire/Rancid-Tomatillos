@@ -26,15 +26,17 @@ const Details = ({ movieDetails, closeMovie }) => {
       <div className="movie-body">
         <h2 className="movie-title">{title}</h2>
         <div className="movie-details">
-          <h3>
-            Rating: {average_rating.toFixed(2)}/10 | Released:
-            {release_date.slice(0, 4)}
+          <h3 className="movie-rating">
+            Rating: {average_rating.toFixed(2)} / 10
           </h3>
-          <h3>Runtime: {runtime} minutes</h3>
-          <h3>Genre: {genres[0]}</h3>
+          <h3 className="movie-release">
+            Released: {release_date.slice(0, 4)}
+          </h3>
+          <h3 className="movie-runtime">Runtime: {runtime} minutes</h3>
+          <h3 className="movie-genre">Genre: {genres[0]}</h3>
         </div>
         <h3>Summary: </h3>
-        <p>{overview}</p>
+        <p className="movie-overview">{overview}</p>
       </div>
     </div>
   );
