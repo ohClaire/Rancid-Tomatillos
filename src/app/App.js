@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import Movies from '../movies/Movies';
 import Details from '../card/Details';
 import './App.css';
@@ -87,14 +88,10 @@ class App extends Component {
             )} */}
           </div>
         </header>
-
         <Route
           exact
-          path="/rancid-tomatillos"
-          render={({ match }) => {
-            console.log(match);
-            <Movies movies={this.state.movies} />;
-          }}
+          path="/"
+          render={() => <Movies movies={this.state.movies} />}
         />
       </main>
     );
