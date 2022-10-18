@@ -5,6 +5,8 @@ import './App.css';
 import fetchData from '../api.js';
 import tomato from './tomato.png';
 
+import { Switch, Route } from 'react-router-dom';
+
 class App extends Component {
   constructor() {
     super();
@@ -50,18 +52,18 @@ class App extends Component {
   };
 
   render() {
-    let content;
-    if (this.state.error) {
-      content = <h2 className="error-message">{this.state.error}</h2>;
-    } else if (this.state.movie) {
-      content = (
-        <Details movieDetails={this.state.movie} closeMovie={this.closeMovie} />
-      );
-    } else {
-      content = (
-        <Movies movies={this.state.movies} showMovie={this.showMovie} />
-      );
-    }
+    // let content;
+    // if (this.state.error) {
+    //   content = <h2 className="error-message">{this.state.error}</h2>;
+    // } else if (this.state.movie) {
+    //   content = (
+    //     <Details movieDetails={this.state.movie} closeMovie={this.closeMovie} />
+    //   );
+    // } else {
+    //   content = (
+    //     <Movies movies={this.state.movies} showMovie={this.showMovie} />
+    //   );
+    // }
 
     return (
       <main>
@@ -76,16 +78,24 @@ class App extends Component {
             </h2>
           </div>
           <div className="divider">
-            {!this.state.movies.length && (
+            {/* {!this.state.movies.length && (
               <img
                 className="ball tomato-icon"
                 src={tomato}
                 alt="rolling tomato"
               />
-            )}
+            )} */}
           </div>
         </header>
-        {content}
+
+        <Route
+          exact
+          path="/rancid-tomatillos"
+          render={({ match }) => {
+            console.log(match);
+            <Movies movies={this.state.movies} />;
+          }}
+        />
       </main>
     );
   }
