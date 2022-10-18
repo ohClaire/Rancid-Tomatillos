@@ -75,9 +75,17 @@ class App extends Component {
               <img className="tomato-icon" src={tomato} alt="cartoon tomato" />s
             </h2>
           </div>
-          <div className="divider"></div>
+          <div className="divider">
+            {!this.state.movies.length && (
+              <img
+                className="ball tomato-icon"
+                src={tomato}
+                alt="rolling tomato"
+              />
+            )}
+          </div>
         </header>
-        {this.state.movies.length && content}
+        {content}
       </main>
     );
   }
