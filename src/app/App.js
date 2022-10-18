@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import Movies from '../movies/Movies';
 import Details from '../card/Details';
 import './App.css';
@@ -50,18 +51,18 @@ class App extends Component {
   };
 
   render() {
-    let content;
-    if (this.state.error) {
-      content = <h2 className="error-message">{this.state.error}</h2>;
-    } else if (this.state.movie) {
-      content = (
-        <Details movieDetails={this.state.movie} closeMovie={this.closeMovie} />
-      );
-    } else {
-      content = (
-        <Movies movies={this.state.movies} showMovie={this.showMovie} />
-      );
-    }
+    // let content;
+    // if (this.state.error) {
+    //   content = <h2 className="error-message">{this.state.error}</h2>;
+    // } else if (this.state.movie) {
+    //   content = (
+    //     <Details movieDetails={this.state.movie} closeMovie={this.closeMovie} />
+    //   );
+    // } else {
+    //   content = (
+    //     <Movies movies={this.state.movies} showMovie={this.showMovie} />
+    //   );
+    // }
 
     return (
       <main>
@@ -76,16 +77,18 @@ class App extends Component {
             </h2>
           </div>
           <div className="divider">
-            {!this.state.movies.length && (
+            {/* {!this.state.movies.length && (
               <img
                 className="ball tomato-icon"
                 src={tomato}
                 alt="rolling tomato"
               />
-            )}
+            )} */}
           </div>
         </header>
-        {content}
+        <Route 
+        exact path="/"  
+        render={() => {<Movies movies={this.state.movies} showMovie={this.showMovie} />;}} />
       </main>
     );
   }
