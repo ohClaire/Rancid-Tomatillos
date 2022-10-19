@@ -25,11 +25,7 @@ class App extends Component {
     }
   };
 
-  render() {    
-    let content;
-    if (this.state.error) {
-      content = <h2 className="error-message">{this.state.error}</h2>;
-    }
+  render() {        
     return (
       <main>
         <header className="header">
@@ -52,7 +48,9 @@ class App extends Component {
             )}
           </div>
         </header>
-        {content}
+         {this.state.error && (
+          <h2 className="error-message">{this.state.error}</h2>
+        )}
         <Switch>
           <Route
             exact
