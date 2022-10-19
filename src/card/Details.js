@@ -1,7 +1,9 @@
 import React from 'react';
 import './Details.css';
+import { NavLink } from 'react-router-dom';
 
 const Details = ({ movieDetails, closeMovie }) => {
+  console.log(movieDetails);
   const {
     id,
     poster_path,
@@ -14,7 +16,7 @@ const Details = ({ movieDetails, closeMovie }) => {
   } = movieDetails;
 
   return (
-    <div className="current-movie" id={id}>
+    <div to={`/${id}`} className="current-movie" id={id}>
       <button className="close-btn" onClick={closeMovie}>
         ✕
       </button>
@@ -27,7 +29,7 @@ const Details = ({ movieDetails, closeMovie }) => {
         <h2 className="movie-title">{title}</h2>
         <div className="movie-details">
           <h3 className="movie-rating">
-            Rating: {average_rating.toFixed(2)} / 10
+            Rating: {average_rating.toFixed(2)}/10
           </h3>
           <h3 className="movie-release">
             Released: {release_date.slice(0, 4)}
