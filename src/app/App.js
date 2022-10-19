@@ -6,14 +6,12 @@ import './App.css';
 import fetchData from '../api.js';
 import tomato from './tomato.png';
 
-import { Switch, Route } from 'react-router-dom';
-
 class App extends Component {
   constructor() {
     super();
     this.state = {
       movies: [],
-      movie: null,
+      movie: {},
     };
   }
   componentDidMount = async () => {
@@ -28,8 +26,10 @@ class App extends Component {
   };
 
   showMovie = async (movieID) => {
+    console.log(movieID);
     let currentMovie;
     try {
+      console.log('fetching');
       currentMovie = await fetch(
         `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieID}`
       );
@@ -39,7 +39,7 @@ class App extends Component {
         throw new Error('something went wrong');
       }
       const data = await currentMovie.json();
-      console.log('data', data);
+      console.log('data', data.movie);
       this.setState({ movie: data.movie });
       console.log('current', this.state.movie);
     } catch (error) {
@@ -53,6 +53,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.state.movie);
     // let content;
     // if (this.state.error) {
     //   content = <h2 className="error-message">{this.state.error}</h2>;
@@ -78,20 +79,33 @@ class App extends Component {
               <img className="tomato-icon" src={tomato} alt="cartoon tomato" />s
             </h2>
           </div>
-          <div className="divider">
-            {/* {!this.state.movies.length && (
+          {/* <div className="divider"> */}
+          {/* {!this.state.movies.length && (
               <img
                 className="ball tomato-icon"
                 src={tomato}
                 alt="rolling tomato"
               />
             )} */}
-          </div>
+          {/* </div> */}
         </header>
         <Route
           exact
           path="/"
-          render={() => <Movies movies={this.state.movies} />}
+          render={() => (
+            <Movies movies={this.state.movies} showMovie={this.showMovie} />
+          )}
+        />
+        <Route
+          path="/:movieId"
+          render={() => {
+            return (
+              <Details
+                movieDetails={this.state.movie}
+                closeMovie={this.closeMovie}
+              />
+            );
+          }}
         />
       </main>
     );
