@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import Movies from '../movies/Movies';
 import Details from '../card/Details';
 import './App.css';
-import { fetchAllMovies, fetchMovie } from '../api.js';
+import { fetchAllMovies } from '../api.js';
 import tomato from './tomato.png';
 
 class App extends Component {
@@ -23,33 +23,6 @@ class App extends Component {
         error: 'There was a problem getting your data. Please try again.',
       });
     }
-  };
-
-  // showMovie = async (movieID) => {
-  //   console.log(movieID);
-  //   let currentMovie;
-  //   try {
-  //     console.log('fetching');
-  //     currentMovie = await fetch(
-  //       `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieID}`
-  //     );
-  //     console.log(currentMovie);
-  //     if (currentMovie.status >= 500) {
-  //       console.log('inside if block');
-  //       throw new Error('something went wrong');
-  //     }
-  //     const data = await currentMovie.json();
-  //     console.log('data', data.movie);
-  //     this.setState({ movie: data.movie });
-  //     console.log('current', this.state.movie);
-  //   } catch (error) {
-  //     console.log(error);
-  //     this.setState({ error: '500 error' });
-  //   }
-  // };
-
-  closeMovie = () => {
-    this.setState({ movie: null });
   };
 
   render() {
