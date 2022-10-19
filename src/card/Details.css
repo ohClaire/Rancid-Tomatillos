@@ -13,7 +13,7 @@
 
 .inner-poster-img {
   min-width: 260px;
-  max-width: 400px;
+  max-width: 350px;
   height: auto;
   border-radius: 16px;
   object-fit: contain;
@@ -34,7 +34,7 @@
 }
 
 .movie-title {
-  font-size: 3rem;
+  font-size: 2.7rem;
 }
 
 .movie-details {
@@ -47,7 +47,7 @@
   flex-wrap: wrap;
   flex: 1 1 0px;
   min-width: 360px;
-  font-size: 1.8rem;
+  font-size: 1.3rem;
 }
 
 h3 {
