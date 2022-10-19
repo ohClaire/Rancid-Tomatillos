@@ -1,4 +1,4 @@
-const fetchData = async () => {
+export const fetchAllMovies = async () => {
   const response = await fetch(
     'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
   );
@@ -13,4 +13,10 @@ const fetchData = async () => {
   return data.movies;
 };
 
-export default fetchData;
+export const fetchMovie = async (movieID) => {
+  const response = await fetch(
+    `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieID}`
+  );
+  const data = await response.json();
+  return data.movie;
+};

@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import Movies from '../movies/Movies';
 import Details from '../card/Details';
 import './App.css';
-import fetchData from '../api.js';
+import { fetchAllMovies, fetchMovie } from '../api.js';
 import tomato from './tomato.png';
 
 class App extends Component {
@@ -11,12 +11,12 @@ class App extends Component {
     super();
     this.state = {
       movies: [],
-      movie: {},
+      movie: null,
     };
   }
   componentDidMount = async () => {
     try {
-      const movieList = await fetchData();
+      const movieList = await fetchAllMovies();
       this.setState({ movies: movieList });
     } catch (error) {
       this.setState({
@@ -25,28 +25,28 @@ class App extends Component {
     }
   };
 
-  showMovie = async (movieID) => {
-    console.log(movieID);
-    let currentMovie;
-    try {
-      console.log('fetching');
-      currentMovie = await fetch(
-        `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieID}`
-      );
-      console.log(currentMovie);
-      if (currentMovie.status >= 500) {
-        console.log('inside if block');
-        throw new Error('something went wrong');
-      }
-      const data = await currentMovie.json();
-      console.log('data', data.movie);
-      this.setState({ movie: data.movie });
-      console.log('current', this.state.movie);
-    } catch (error) {
-      console.log(error);
-      this.setState({ error: '500 error' });
-    }
-  };
+  // showMovie = async (movieID) => {
+  //   console.log(movieID);
+  //   let currentMovie;
+  //   try {
+  //     console.log('fetching');
+  //     currentMovie = await fetch(
+  //       `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieID}`
+  //     );
+  //     console.log(currentMovie);
+  //     if (currentMovie.status >= 500) {
+  //       console.log('inside if block');
+  //       throw new Error('something went wrong');
+  //     }
+  //     const data = await currentMovie.json();
+  //     console.log('data', data.movie);
+  //     this.setState({ movie: data.movie });
+  //     console.log('current', this.state.movie);
+  //   } catch (error) {
+  //     console.log(error);
+  //     this.setState({ error: '500 error' });
+  //   }
+  // };
 
   closeMovie = () => {
     this.setState({ movie: null });
@@ -79,29 +79,28 @@ class App extends Component {
               <img className="tomato-icon" src={tomato} alt="cartoon tomato" />s
             </h2>
           </div>
-          {/* <div className="divider"> */}
-          {/* {!this.state.movies.length && (
+          <div className="divider">
+            {!this.state.movies.length && (
               <img
                 className="ball tomato-icon"
                 src={tomato}
                 alt="rolling tomato"
               />
-            )} */}
-          {/* </div> */}
+            )}
+          </div>
         </header>
         <Route
           exact
           path="/"
-          render={() => (
-            <Movies movies={this.state.movies} showMovie={this.showMovie} />
-          )}
+          render={() => <Movies movies={this.state.movies} />}
         />
         <Route
           path="/:movieId"
-          render={() => {
+          render={({ match }) => {
             return (
               <Details
-                movieDetails={this.state.movie}
+                movieId={match.params.movieId}
+                showMovie={this.showMovie}
                 closeMovie={this.closeMovie}
               />
             );
