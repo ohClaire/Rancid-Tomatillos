@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Details.css';
 import { Link } from 'react-router-dom';
+import { fetchMovie } from '../api';
 
 class Details extends Component {
   constructor(props) {
@@ -9,13 +10,22 @@ class Details extends Component {
       movie: null,
     };
   }
-
+   
   componentDidMount = async () => {
-    const response = await fetch(
-      `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.movieId}`
-    );
-    const data = await response.json();
-    this.setState({ movie: data.movie });
+    try {
+      console.log('fetching');
+      const currentMovie = await fetchMovie(this.props.movieId);
+      if (currentMovie.status >= 500) {
+        console.log('inside if block');
+        throw new Error('something went wrong');
+      }
+      const data = await currentMovie.json();
+      console.log('data', data.movie);
+      this.setState({ movie: data.movie });
+    } catch (error) {
+      console.log(error);
+      this.setState({ error: '500 error' });
+    }
   };
 
   render = () => {
