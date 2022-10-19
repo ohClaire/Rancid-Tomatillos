@@ -25,8 +25,7 @@ class App extends Component {
     }
   };
 
-  render() {
-    console.log(this.state.movie);
+  render() {    
     let content;
     if (this.state.error) {
       content = <h2 className="error-message">{this.state.error}</h2>;
@@ -61,6 +60,7 @@ class App extends Component {
             render={() => <Movies movies={this.state.movies} />}
           />
           <Route
+           exact
             path="/:movieId"
             render={({ match }) => {
               return (

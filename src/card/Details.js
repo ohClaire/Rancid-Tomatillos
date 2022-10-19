@@ -10,26 +10,21 @@ class Details extends Component {
       movie: null,
     };
   }
-   
+
   componentDidMount = async () => {
-    try {
-      console.log('fetching');
+    try {      
       const currentMovie = await fetchMovie(this.props.movieId);
-      if (currentMovie.status >= 500) {
-        console.log('inside if block');
+      if (currentMovie.status >= 500) {        
         throw new Error('something went wrong');
       }
-      const data = await currentMovie.json();
-      console.log('data', data.movie);
+      const data = await currentMovie.json();      
       this.setState({ movie: data.movie });
-    } catch (error) {
-      console.log(error);
+    } catch (error) {      
       this.setState({ error: '500 error' });
     }
   };
 
-  render = () => {
-    console.log(this.state.movie);
+  render = () => {    
     if (!this.state.movie) {
       return null;
     }
@@ -39,7 +34,7 @@ class Details extends Component {
         className="current-movie"
         id={this.state.movie.id}
       >
-        <Link exact to="/" className="close-btn">
+        <Link to="/" className="close-btn">
           <button className="close-btn">✕</button>
         </Link>
         <img
