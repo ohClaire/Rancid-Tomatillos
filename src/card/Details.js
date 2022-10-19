@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Details.css';
 import { Link } from 'react-router-dom';
+import { fetchMovie } from '../api';
 
 class Details extends Component {
   constructor(props) {
@@ -11,17 +12,21 @@ class Details extends Component {
   }
 
   componentDidMount = async () => {
-    const response = await fetch(
-      `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.movieId}`
-    );
-    const data = await response.json();
-    this.setState({ movie: data.movie });
+    try {
+      const currentMovie = await fetchMovie(this.props.movieId);
+      if (!currentMovie.ok) {
+        throw new Error(`${currentMovie.status} Error please try again`);
+      }
+      const data = await currentMovie.json();
+      this.setState({ movie: data.movie });
+    } catch (error) {
+      this.setState({ error: error.message });
+    }
   };
 
   render = () => {
-    console.log(this.state.movie);
     if (!this.state.movie) {
-      return null;
+      return <h2 className="error-message">{this.state.error}</h2>;
     }
     return (
       <div
@@ -29,7 +34,11 @@ class Details extends Component {
         className="current-movie"
         id={this.state.movie.id}
       >
-        <Link exact to="/" className="close-btn">
+        {this.state.error && (
+          <h2 className="error-message">{this.state.error}</h2>
+        )}
+
+        <Link to="/" className="close-btn">
           <button className="close-btn">✕</button>
         </Link>
         <img

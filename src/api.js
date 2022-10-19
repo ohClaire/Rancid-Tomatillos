@@ -14,9 +14,7 @@ export const fetchAllMovies = async () => {
 };
 
 export const fetchMovie = async (movieID) => {
-  const response = await fetch(
+ return await fetch(
     `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieID}`
-  );
-  const data = await response.json();
-  return data.movie;
+  ); 
 };

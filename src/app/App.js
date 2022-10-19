@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Movies from '../movies/Movies';
 import Details from '../card/Details';
 import './App.css';
-import { fetchAllMovies, fetchMovie } from '../api.js';
+import { fetchAllMovies } from '../api.js';
 import tomato from './tomato.png';
 
 class App extends Component {
@@ -25,48 +25,7 @@ class App extends Component {
     }
   };
 
-  // showMovie = async (movieID) => {
-  //   console.log(movieID);
-  //   let currentMovie;
-  //   try {
-  //     console.log('fetching');
-  //     currentMovie = await fetch(
-  //       `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieID}`
-  //     );
-  //     console.log(currentMovie);
-  //     if (currentMovie.status >= 500) {
-  //       console.log('inside if block');
-  //       throw new Error('something went wrong');
-  //     }
-  //     const data = await currentMovie.json();
-  //     console.log('data', data.movie);
-  //     this.setState({ movie: data.movie });
-  //     console.log('current', this.state.movie);
-  //   } catch (error) {
-  //     console.log(error);
-  //     this.setState({ error: '500 error' });
-  //   }
-  // };
-
-  closeMovie = () => {
-    this.setState({ movie: null });
-  };
-
-  render() {
-    console.log(this.state.movie);
-    // let content;
-    // if (this.state.error) {
-    //   content = <h2 className="error-message">{this.state.error}</h2>;
-    // } else if (this.state.movie) {
-    //   content = (
-    //     <Details movieDetails={this.state.movie} closeMovie={this.closeMovie} />
-    //   );
-    // } else {
-    //   content = (
-    //     <Movies movies={this.state.movies} showMovie={this.showMovie} />
-    //   );
-    // }
-
+  render() {        
     return (
       <main>
         <header className="header">
@@ -89,23 +48,29 @@ class App extends Component {
             )}
           </div>
         </header>
-        <Route
-          exact
-          path="/"
-          render={() => <Movies movies={this.state.movies} />}
-        />
-        <Route
-          path="/:movieId"
-          render={({ match }) => {
-            return (
-              <Details
-                movieId={match.params.movieId}
-                showMovie={this.showMovie}
-                closeMovie={this.closeMovie}
-              />
-            );
-          }}
-        />
+         {this.state.error && (
+          <h2 className="error-message">{this.state.error}</h2>
+        )}
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => <Movies movies={this.state.movies} />}
+          />
+          <Route
+           exact
+            path="/:movieId"
+            render={({ match }) => {
+              return (
+                <Details
+                  movieId={match.params.movieId}
+                  showMovie={this.showMovie}
+                  closeMovie={this.closeMovie}
+                />
+              );
+            }}
+          />
+        </Switch>
       </main>
     );
   }
