@@ -12,21 +12,21 @@ class Details extends Component {
   }
 
   componentDidMount = async () => {
-    try {      
+    try {
       const currentMovie = await fetchMovie(this.props.movieId);
-      if (currentMovie.status >= 500) {        
-        throw new Error('something went wrong');
+      if (!currentMovie.ok) {
+        throw new Error(`${currentMovie.status} Error please try again`);
       }
-      const data = await currentMovie.json();      
+      const data = await currentMovie.json();
       this.setState({ movie: data.movie });
-    } catch (error) {      
-      this.setState({ error: '500 error' });
+    } catch (error) {
+      this.setState({ error: error.message });
     }
   };
 
-  render = () => {    
+  render = () => {
     if (!this.state.movie) {
-      return null;
+      return <h2 className="error-message">{this.state.error}</h2>;
     }
     return (
       <div
@@ -34,6 +34,10 @@ class Details extends Component {
         className="current-movie"
         id={this.state.movie.id}
       >
+        {this.state.error && (
+          <h2 className="error-message">{this.state.error}</h2>
+        )}
+
         <Link to="/" className="close-btn">
           <button className="close-btn">✕</button>
         </Link>
