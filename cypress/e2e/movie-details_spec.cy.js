@@ -4,11 +4,12 @@ describe('Selected Movie Page flows', () => {
       fixture: 'data-snapshot.json',
     });
 
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
   });
 
-  it('should show additional details about the selected movie', () => {
-    cy.get('.movie-card-btn:nth-child(1)').click();
+  it('Should show additional details about the selected movie', () => {
+    cy.get('[aria-label="Money Plane"]').click();
+    cy.url().should('includes', '694919');
     cy.get('.current-movie').within(() => {
       cy.get('.inner-poster-img').should(
         'have.attr',
@@ -24,9 +25,9 @@ describe('Selected Movie Page flows', () => {
     });
   });
 
-  it('should return to main page when the close button is clicked', () => {
-    cy.get('.movie-card-btn:nth-child(1)').click();
-    cy.get('.close-btn').click();
-    cy.get('.movies-container').should('be.visible');
+  it('Should return to main page when the close button is clicked', () => {
+    cy.get('[aria-label="Money Plane"]').click();
+    cy.get('[aria-label="close Money Plane"]').click();
+    cy.url().should('eq', 'http://localhost:3000/');
   });
 });

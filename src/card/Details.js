@@ -38,8 +38,13 @@ class Details extends Component {
           <h2 className="error-message">{this.state.error}</h2>
         )}
 
-        <Link to="/" className="close-btn">
-          <button className="close-btn">✕</button>
+        <Link to="/">
+          <button
+            className="close-btn"
+            aria-label={`close ${this.state.movie.title}`}
+          >
+            ✕
+          </button>
         </Link>
         <img
           className="inner-poster-img"
