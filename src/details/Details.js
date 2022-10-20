@@ -25,13 +25,14 @@ class Details extends Component {
   };
 
   validateMovieInfo = (key) => {
-  return !this.state.movie[key] ? 'Info is pending' : this.state.movie[key]
-    // if(!this.state.movie[key]) {
-    //   return 'Info is pending'
-    // } else {
-    //   return this.state.movie[key]
-    // }
-  }
+    return !this.state.movie[key] ? 'Info is pending' : this.state.movie[key];
+  };
+
+  displayGenres = () => {
+    return !this.state.movie.genres.length
+      ? 'Info is pending'
+      : this.state.movie.genres.join(' | ');
+  };
 
   render = () => {
     if (!this.state.movie) {
@@ -72,9 +73,7 @@ class Details extends Component {
             <h3 className="movie-runtime">
               Runtime: {this.state.movie.runtime} minutes
             </h3>
-            <h3 className="movie-genre">
-              Genre: {this.validateMovieInfo('genres')}
-            </h3>
+            <h3 className="movie-genre">Genre: {this.displayGenres()}</h3>
           </div>
           <h3>Summary: </h3>
           <p className="movie-overview">{this.validateMovieInfo('overview')}</p>
