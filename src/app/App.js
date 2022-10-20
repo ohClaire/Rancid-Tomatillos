@@ -11,13 +11,14 @@ class App extends Component {
     super();
     this.state = {
       movies: [],
-      movie: null,
     };
   }
+
   componentDidMount = async () => {
     try {
       const movieList = await fetchAllMovies();
-      this.setState({ movies: movieList });
+      const data = await movieList.json();
+      this.setState({ movies: data.movies });
     } catch (error) {
       this.setState({
         error: 'There was a problem getting your data. Please try again.',
@@ -25,7 +26,7 @@ class App extends Component {
     }
   };
 
-  render() {        
+  render() {
     return (
       <main>
         <header className="header">
@@ -48,7 +49,7 @@ class App extends Component {
             )}
           </div>
         </header>
-         {this.state.error && (
+        {this.state.error && (
           <h2 className="error-message">{this.state.error}</h2>
         )}
         <Switch>
@@ -58,16 +59,10 @@ class App extends Component {
             render={() => <Movies movies={this.state.movies} />}
           />
           <Route
-           exact
+            exact
             path="/:movieId"
             render={({ match }) => {
-              return (
-                <Details
-                  movieId={match.params.movieId}
-                  showMovie={this.showMovie}
-                  closeMovie={this.closeMovie}
-                />
-              );
+              return <Details movieId={match.params.movieId} />;
             }}
           />
         </Switch>
