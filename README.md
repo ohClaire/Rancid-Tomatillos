@@ -19,7 +19,7 @@ Rancid Tomatillos provides a selection of movies released between 2019-2020to to
 - [ScreenShots](#ScreenShots)
 - [Features](#Features)
 - [Contributors](#Contributors)
-- [WinsandChallenges](#WinsandChallenges)
+- [Wins_and_Challenges](#Wins_and_Challenges)
 
 
 ## Overview
@@ -96,7 +96,7 @@ You don't have to ever use eject. The curated feature set is suitable for small 
 Hannah Celemen - hcelemen@icloud.com - [LinkedIn](https://www.linkedin.com/in/hannah-celemen/) - [GitHub](https://github.com/ohClaire?tab=repositories)
 Hazel Pablo - pablohj08@gmail.com - [LinkedIn](https://www.linkedin.com/in/hazel-pablo-704779245/) - [GitHub](https://github.com/Hpablo08)
 
-## Wins and Challenges
+## Wins_and_Challenges
 
 ### Wins
 
