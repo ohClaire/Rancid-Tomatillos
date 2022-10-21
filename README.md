@@ -11,7 +11,18 @@
 
 Rancid Tomatillos provides a selection of movies released between 2019-2020to to choose from
 
-## About The Project
+## Table of Contents
+- [Overview](#Overview)
+- [Highlights](#Highlights)
+- [Technologies](#Technologies)
+- [Links](#Links)
+- [ScreenShots](#ScreenShots)
+- [Features](#Features)
+- [Contributors](#Contributors)
+- [Wins_and_Challenges](#Wins_and_Challenges)
+
+
+## Overview
 
 This was a paired collaboration assigned in week 14 of the Turing School of Software and Design front-end engineering program. The goals of this group project were to:
 
@@ -20,23 +31,23 @@ This was a paired collaboration assigned in week 14 of the Turing School of Soft
 * Test React components & asynchronous JS with Cypress
 * Practicing refactoring 
 
-Highlights:
+## Highlights:
 
 * Accessibility: app is fully _tabbable_, and scored 100% on both Lighthouse and WAVE audits
 * 
 
-### Technologies
+## Technologies
 
  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
  ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
  ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Cypress](https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white)
 
-### Project Link
+## Links
 
 Deployed Project: []()
 
-### Screenshots
+## Screenshots
 
 | Desktop View | Mobile View |
 |---------------|-----------------|
@@ -80,12 +91,12 @@ You don't have to ever use eject. The curated feature set is suitable for small 
   <li>Enter control + c in your terminal to stop the local server at any time.</li>
 </ol>
 
-## Contact
+## Contributors
 
-Hannah Celemen - hcelemen@icloud.com - [LinkedIn](https://www.linkedin.com/in/hannah-celemen/) - [GitHub](https://github.com/ohClaire?tab=repositories)
-Hazel Pablo - hazel.pablo90@yahoo.com - [LinkedIn]() - [Github]()
+Hannah Celemen - hcelemen@icloud.com - [LinkedIn](https://www.linkedin.com/in/hannah-celemen/) - [GitHub](https://github.com/ohClaire?tab=repositories) </br>
+Hazel Pablo - pablohj08@gmail.com - [LinkedIn](https://www.linkedin.com/in/hazel-pablo-704779245/) - [GitHub](https://github.com/Hpablo08)
 
-## Wins and Challenges
+## Wins_and_Challenges
 
 ### Wins
 
