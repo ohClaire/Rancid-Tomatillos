@@ -2,8 +2,16 @@ import React from 'react';
 import './Movies.css';
 import Card from '../card/Card';
 
-const Movies = ({ movies }) => {
-  const movieCards = movies.map((movie) => {
+const Movies = ({ movies, searchedMovie }) => {
+  let movieCards;
+  if (searchedMovie !== '') {
+    movieCards = movies.filter((movie) =>
+      movie.title.toLowerCase().includes(searchedMovie.toLowerCase())
+    );
+  } else {
+    movieCards = movies;
+  }
+  const displayedMovies = movieCards.map((movie) => {
     return (
       <Card
         key={movie.id}
@@ -14,7 +22,11 @@ const Movies = ({ movies }) => {
     );
   });
 
-  return <div className="movies-container">{movieCards}</div>;
+  return (
+    <div className="movies-container">
+      {displayedMovies.length ? displayedMovies : 'Sorry No Movies Found'}
+    </div>
+  );
 };
 
 export default Movies;
