@@ -1,0 +1,10 @@
+.search-bar-form{
+  display: flex;
+  align-items: flex-start;
+  height: 150px;
+
+}
+
+.search-input{
+  height: 100px;
+}

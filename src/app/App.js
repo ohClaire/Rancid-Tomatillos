@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 import Movies from '../movies/Movies';
 import Details from '../details/Details';
 import './App.css';
 import { fetchAllMovies } from '../api.js';
 import tomato from './tomato.png';
+import Search from '../searchForm/Search'
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       movies: [],
+      searchedMovie: '',
     };
   }
 
@@ -25,11 +27,17 @@ class App extends Component {
       });
     }
   };
+  searchMovie = (input) => {
+    this.setState({searchedMovie: input})
+  }
+  
 
-  render() {
+  render() { 
+  
     return (
       <main>
         <header className="header">
+          <Search searchMovie={this.searchMovie}/> 
           <div className="container">
             <h1 className="heading-title h1">Rancid</h1>
             <h2 className="heading-title h2">
@@ -38,7 +46,7 @@ class App extends Component {
               matill
               <img className="tomato-icon" src={tomato} alt="cartoon tomato" />s
             </h2>
-          </div>
+          </div>         
           <div className="divider">
             {!this.state.movies.length && (
               <img
@@ -56,7 +64,7 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={() => <Movies movies={this.state.movies} />}
+            render={() => <Movies movies={this.state.movies} searchedMovie={this.state.searchedMovie} />}
           />
           <Route
             exact
