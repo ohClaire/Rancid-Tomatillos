@@ -15,10 +15,9 @@ Rancid Tomatillos provides a selection of movies released between 2019-2020to to
 - [Overview](#Overview)
 - [Highlights](#Highlights)
 - [Technologies](#Technologies)
-- [ProjectLink](#ProjectLink)
+- [Links](#Links)
 - [ScreenShots](#ScreenShots)
 - [Features](#Features)
-- [Links](#Links)
 - [Contributors](#Contributors)
 - [WinsandChallenges](#WinsandChallenges)
 
@@ -44,7 +43,7 @@ Highlights:
  ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Cypress](https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white)
 
-## Project Link
+## Links
 
 Deployed Project: []()
 
