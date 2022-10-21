@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
+import ReactPlayer from 'react-player/youtube';
 import './Details.css';
 import { Link } from 'react-router-dom';
-import { fetchMovie } from '../api';
+import { fetchMovie, fetchVideo } from '../api';
 
 class Details extends Component {
   constructor(props) {
     super(props);
     this.state = {
       movie: null,
+      videoUrl: null,
     };
   }
 
   componentDidMount = async () => {
     try {
       const currentMovie = await fetchMovie(this.props.movieId);
-      if (!currentMovie.ok) {
+      const movieVideo = await fetchVideo(this.props.movieId);
+      if (!currentMovie.ok || !movieVideo.ok) {
         throw new Error(`${currentMovie.status} Error please try again`);
       }
-      const data = await currentMovie.json();
-      this.setState({ movie: data.movie });
+      const movie = await currentMovie.json();
+      const videos = await movieVideo.json();
+      this.setState({ movie: movie.movie, videoUrl: videos.videos });
     } catch (error) {
       this.setState({ error: error.message });
     }
@@ -34,7 +38,32 @@ class Details extends Component {
       : this.state.movie.genres.join(' | ');
   };
 
+  displayEachVideo = () => {
+    console.log(this.state.videoUrl.length);
+    if (this.state.videoUrl.length > 0) {
+      return this.state.videoUrl.map((video) => {
+        return (
+          <ReactPlayer
+            key={video.id}
+            url={`https://www.youtube.com/embed/${video.key}`}
+            origin="youtube.com/"
+            width="240px"
+            height="auto"
+          />
+        );
+      });
+    } else {
+      return (
+        <h3 className="video-message">
+          'Sorry, no videos were provided for this movie.'
+        </h3>
+      );
+    }
+  };
+
   render = () => {
+    console.log(this.state.videoUrl);
+
     if (!this.state.movie) {
       return <h2 className="error-message">{this.state.error}</h2>;
     }
@@ -56,11 +85,17 @@ class Details extends Component {
             ✕
           </button>
         </Link>
-        <img
-          className="inner-poster-img"
-          src={this.state.movie.poster_path}
-          alt={`poster of ${this.state.movie.title} movie`}
-        />
+        <div className="media">
+          <img
+            className="inner-poster-img"
+            src={this.state.movie.poster_path}
+            alt={`poster of ${this.state.movie.title} movie`}
+          />
+          <div className="preview-container">
+            <h3 className="preview-header">Select a preview to watch:</h3>
+            <div className="video-container">{this.displayEachVideo()}</div>
+          </div>
+        </div>
         <div className="movie-body">
           <h2 className="movie-title">{this.state.movie.title}</h2>
           <div className="movie-details">

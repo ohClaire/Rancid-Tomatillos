@@ -7,3 +7,9 @@ export const fetchMovie = async (movieID) => {
     `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieID}`
   );
 };
+
+export const fetchVideo = async (movieID) => {
+  return await fetch(
+    `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieID}/videos`
+  );
+};

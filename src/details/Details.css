@@ -20,6 +20,10 @@
   flex: 1 0 35%;
 }
 
+.media {
+  display: flex;
+}
+
 .close-btn {
   color: white;
   font-size: 2rem;
@@ -44,6 +48,7 @@
 
 .movie-body {
   padding-left: 60px;
+  padding-right: 60px;
   flex-wrap: wrap;
   flex: 1 1 0px;
   min-width: 360px;
@@ -52,6 +57,25 @@
 
 h3 {
   font-weight: 400;
+}
+
+.preview-header {
+  text-align: center;
+}
+
+.preview-container {
+  padding: 20px;
+}
+
+.video-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.video-message {
+  color: white;
 }
 
 @media only screen and (max-width: 400px) {
@@ -70,7 +94,6 @@ h3 {
   }
   .movie-body {
     font-size: 1.2rem;
-    padding: 0px;
     min-width: 240px;
   }
   .inner-poster-img {
