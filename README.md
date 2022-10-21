@@ -93,7 +93,7 @@ You don't have to ever use eject. The curated feature set is suitable for small 
 
 ## Contributors
 
-Hannah Celemen - hcelemen@icloud.com - [LinkedIn](https://www.linkedin.com/in/hannah-celemen/) - [GitHub](https://github.com/ohClaire?tab=repositories)
+Hannah Celemen - hcelemen@icloud.com - [LinkedIn](https://www.linkedin.com/in/hannah-celemen/) - [GitHub](https://github.com/ohClaire?tab=repositories) </br>
 Hazel Pablo - pablohj08@gmail.com - [LinkedIn](https://www.linkedin.com/in/hazel-pablo-704779245/) - [GitHub](https://github.com/Hpablo08)
 
 ## Wins_and_Challenges
