@@ -1,4 +1,4 @@
-describe('empty spec', () => {
+describe('Error Messaging Flows', () => {
   it('Should show error when all movies cannot be displayed', () => {
     cy.intercept(
       {

@@ -3,13 +3,13 @@ import './Movies.css';
 import Card from '../card/Card';
 
 const Movies = ({ movies, searchedMovie }) => {
-  let movieCards
+  let movieCards;
   if (searchedMovie !== '') {
-     movieCards = movies.filter((movie) =>
+    movieCards = movies.filter((movie) =>
       movie.title.toLowerCase().includes(searchedMovie.toLowerCase())
     );
   } else {
-    movieCards = movies
+    movieCards = movies;
   }
   const displayedMovies = movieCards.map((movie) => {
     return (
@@ -22,7 +22,11 @@ const Movies = ({ movies, searchedMovie }) => {
     );
   });
 
-  return <div className="movies-container">{displayedMovies}</div>;
+  return (
+    <div className="movies-container">
+      {displayedMovies.length ? displayedMovies : 'Sorry No Movies Found'}
+    </div>
+  );
 };
 
 export default Movies;
