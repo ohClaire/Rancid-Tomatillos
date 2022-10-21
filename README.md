@@ -31,7 +31,7 @@ This was a paired collaboration assigned in week 14 of the Turing School of Soft
 * Test React components & asynchronous JS with Cypress
 * Practicing refactoring 
 
-Highlights:
+## Highlights:
 
 * Accessibility: app is fully _tabbable_, and scored 100% on both Lighthouse and WAVE audits
 * 
