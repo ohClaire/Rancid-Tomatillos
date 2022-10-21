@@ -30,4 +30,16 @@ describe('Selected Movie Page flows', () => {
     cy.get('[aria-label="close Money Plane"]').click();
     cy.url().should('eq', 'http://localhost:3000/');
   });
+
+  it('Should have genres in readable format if there is more than one', () => {
+    cy.visit('/508439');
+    cy.get('[class="movie-genre"]').contains(
+      'Animation | Family | Adventure | Comedy | Fantasy'
+    );
+  });
+
+  it('Should return a message if a movie detail is missing', () => {
+    cy.visit('/737799');
+    cy.get('[class="movie-overview"]').contains('Info is pending');
+  });
 });
