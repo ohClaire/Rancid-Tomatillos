@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Movies from '../movies/Movies';
-import Details from '../card/Details';
+import Details from '../details/Details';
 import './App.css';
 import { fetchAllMovies } from '../api.js';
 import tomato from './tomato.png';

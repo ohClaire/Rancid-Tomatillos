@@ -1,6 +1,6 @@
 describe('Rancid Tomatillos Home Page flows', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
   });
 
   it('Should be able to view the home page', () => {
