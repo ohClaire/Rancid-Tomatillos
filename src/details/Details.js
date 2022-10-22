@@ -17,13 +17,21 @@ class Details extends Component {
   componentDidMount = async () => {
     try {
       const currentMovie = await fetchMovie(this.props.movieId);
-      const movieVideo = await fetchVideo(this.props.movieId);
-      if (!currentMovie.ok || !movieVideo.ok) {
+      if (!currentMovie.ok) {
         throw new Error(`${currentMovie.status} Error please try again`);
       }
       const movie = await currentMovie.json();
+      this.setState({ movie: movie.movie });
+    } catch (error) {
+      this.setState({ error: error.message });
+    }
+    try {
+      const movieVideo = await fetchVideo(this.props.movieId);
+      if (!movieVideo.ok) {
+        throw new Error(`${movieVideo.status} Error please try again`);
+      }
       const videos = await movieVideo.json();
-      this.setState({ movie: movie.movie, videoUrl: videos.videos });
+      this.setState({ videoUrl: videos.videos });
     } catch (error) {
       this.setState({ error: error.message });
     }
@@ -40,6 +48,11 @@ class Details extends Component {
   };
 
   displayEachVideo = () => {
+    if (!this.state.videoUrl) {
+      return (
+        <h3 className="video-message">Sorry, could not retrieve videos.</h3>
+      );
+    }
     if (this.state.videoUrl.length > 0) {
       return this.state.videoUrl.map((video) => {
         return video.site === 'YouTube' ? (
@@ -79,7 +92,7 @@ class Details extends Component {
           className="current-movie"
           id={this.state.movie.id}
         >
-          {this.state.error && (
+          {this.state.error && !this.state.movie && (
             <h2 className="error-message">{this.state.error}</h2>
           )}
 

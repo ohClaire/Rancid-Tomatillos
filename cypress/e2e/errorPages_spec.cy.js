@@ -1,6 +1,6 @@
 describe('Error Messaging Flows', () => {
   it('Should show error when all movies cannot be retrieved', () => {
-    cy.intercept('/api/v2/movies', {
+    cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
       forceNetworkError: true,
     });
     cy.visit('/');

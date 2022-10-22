@@ -61,4 +61,16 @@ describe('Selected Movie Page flows', () => {
       'Sorry, no videos were provided for this movie.'
     );
   });
+
+  it('Should still display the movie details even when the videos cannot be retrieved and have a message for the user', () => {
+    cy.intercept(
+      'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919/videos',
+      {
+        forceNetworkError: true,
+      }
+    ).as('video-block');
+    cy.visit('/694919');
+    cy.get('.movie-title').should('be.visible');
+    cy.get('.video-message').contains('Sorry, could not retrieve videos.');
+  });
 });
