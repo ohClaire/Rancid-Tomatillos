@@ -70,57 +70,61 @@ class Details extends Component {
   };
 
   render = () => {
-    console.log(this.state.videoUrl);
-
     if (!this.state.movie) {
       return <h2 className="error-message">{this.state.error}</h2>;
     }
     return (
-      <div
-        to={`/${this.state.movie.id}`}
-        className="current-movie"
-        id={this.state.movie.id}
-      >
-        {this.state.error && (
-          <h2 className="error-message">{this.state.error}</h2>
-        )}
+      <div className="content-container">
+        <div
+          to={`/${this.state.movie.id}`}
+          className="current-movie"
+          id={this.state.movie.id}
+        >
+          {this.state.error && (
+            <h2 className="error-message">{this.state.error}</h2>
+          )}
 
-        <Link to="/">
-          <button
-            className="close-btn"
-            aria-label={`close ${this.state.movie.title}`}
-          >
-            ✕
-          </button>
-        </Link>
-        <div className="media">
-          <img
-            className="inner-poster-img"
-            src={this.state.movie.poster_path}
-            alt={`poster of ${this.state.movie.title} movie`}
-          />
-          <div className="preview-container">
-            <h3 className="preview-header">Select a preview to watch:</h3>
-            <div className="video-container">{this.displayEachVideo()}</div>
-            <ReactPlayer url="https://vimeo.com/436179361" />
+          <div className="button-container">
+            <Link to="/">
+              <button
+                className="close-btn"
+                aria-label={`close ${this.state.movie.title}`}
+              >
+                ✕
+              </button>
+            </Link>
           </div>
-        </div>
-        <div className="movie-body">
-          <h2 className="movie-title">{this.state.movie.title}</h2>
-          <div className="movie-details">
-            <h3 className="movie-rating">
-              Rating: {this.state.movie.average_rating.toFixed(2)}/10
-            </h3>
-            <h3 className="movie-release">
-              Released: {this.state.movie.release_date.slice(0, 4)}
-            </h3>
-            <h3 className="movie-runtime">
-              Runtime: {this.state.movie.runtime} minutes
-            </h3>
-            <h3 className="movie-genre">Genre: {this.displayGenres()}</h3>
+
+          <div className="media">
+            <img
+              className="inner-poster-img"
+              src={this.state.movie.poster_path}
+              alt={`poster of ${this.state.movie.title} movie`}
+            />
+            <section className="preview-container">
+              <h2 className="preview-header">Watch Previews</h2>
+              <div className="video-container">{this.displayEachVideo()}</div>
+            </section>
           </div>
-          <h3>Summary: </h3>
-          <p className="movie-overview">{this.validateMovieInfo('overview')}</p>
+          <section className="movie-body">
+            <h2 className="movie-title">{this.state.movie.title}</h2>
+            <article className="movie-details">
+              <h3 className="movie-rating">
+                Rating: {this.state.movie.average_rating.toFixed(2)}/10
+              </h3>
+              <h3 className="movie-release">
+                Released: {this.state.movie.release_date.slice(0, 4)}
+              </h3>
+              <h3 className="movie-runtime">
+                Runtime: {this.state.movie.runtime} minutes
+              </h3>
+              <h3 className="movie-genre">Genre: {this.displayGenres()}</h3>
+            </article>
+            <h3>Summary: </h3>
+            <p className="movie-overview">
+              {this.validateMovieInfo('overview')}
+            </p>
+          </section>
         </div>
       </div>
     );

@@ -34,8 +34,8 @@ class App extends Component {
   render() {
     return (
       <main>
+        <Search searchMovie={this.searchMovie} />
         <header className="header">
-          <Search searchMovie={this.searchMovie} />
           <div className="container">
             <h1 className="heading-title h1">Rancid</h1>
             <h2 className="heading-title h2">
@@ -45,16 +45,17 @@ class App extends Component {
               <img className="tomato-icon" src={tomato} alt="cartoon tomato" />s
             </h2>
           </div>
-          <div className="divider">
-            {!this.state.movies.length && (
-              <img
-                className="ball tomato-icon"
-                src={tomato}
-                alt="rolling tomato"
-              />
-            )}
-          </div>
         </header>
+        <div className="divider">
+          {!this.state.movies.length && (
+            <img
+              className="ball tomato-icon"
+              src={tomato}
+              alt="rolling tomato"
+            />
+          )}
+        </div>
+        {/* <div className="content-container"> */}
         {this.state.error && (
           <h2 className="error-message">{this.state.error}</h2>
         )}
@@ -77,6 +78,7 @@ class App extends Component {
             }}
           />
         </Switch>
+        {/* </div> */}
       </main>
     );
   }
