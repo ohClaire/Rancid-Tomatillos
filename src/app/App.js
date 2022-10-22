@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { fetchAllMovies } from '../api.js';
 import Movies from '../movies/Movies';
 import Details from '../details/Details';
-import './App.css';
-import { fetchAllMovies } from '../api.js';
-import tomato from './tomato.png';
 import Search from '../searchForm/Search';
+import tomato from './tomato.png';
+import './App.css';
 
 class App extends Component {
   constructor() {

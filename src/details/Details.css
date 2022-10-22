@@ -9,6 +9,7 @@
   display: flex;
   flex: 0 1 0px;
   flex-wrap: wrap;
+  width: 85%;
 }
 
 .inner-poster-img {
@@ -22,6 +23,7 @@
 
 .media {
   display: flex;
+  justify-content: center;
 }
 
 .close-btn {
@@ -101,5 +103,8 @@ h3 {
   }
   .close-btn {
     font-size: 1rem;
+  }
+  .search-bar-form {
+    justify-content: center;
   }
 }

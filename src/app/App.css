@@ -23,23 +23,6 @@
   margin: 0px;
 }
 
-.search-bar-form {
-  display: flex;
-  justify-content: flex-end;
-  border-bottom: 5px;
-}
-
-.search-button:hover {
-  background-color: white;
-  color: black;
-  box-shadow: 0 0 11px white;
-  transform: translateY(+0.08em);
-  height: 30px;
-}
-.search-input {
-  height: 24px;
-}
-
 .error-message {
   color: white;
   font-family: 'PT Serif', serif;

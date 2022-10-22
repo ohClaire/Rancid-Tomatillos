@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactPlayer from 'react-player/youtube';
+import Vimeo from '@u-wave/react-vimeo';
 import './Details.css';
 import { Link } from 'react-router-dom';
 import { fetchMovie, fetchVideo } from '../api';
@@ -42,11 +43,18 @@ class Details extends Component {
     console.log(this.state.videoUrl.length);
     if (this.state.videoUrl.length > 0) {
       return this.state.videoUrl.map((video) => {
-        return (
+        return video.site === 'YouTube' ? (
           <ReactPlayer
             key={video.id}
             url={`https://www.youtube.com/embed/${video.key}`}
-            origin="youtube.com/"
+            origin={`${video.site}.com/`}
+            width="240px"
+            height="auto"
+          />
+        ) : (
+          <Vimeo
+            key={video.id}
+            video={`${video.key}`}
             width="240px"
             height="auto"
           />
@@ -55,7 +63,7 @@ class Details extends Component {
     } else {
       return (
         <h3 className="video-message">
-          'Sorry, no videos were provided for this movie.'
+          Sorry, no videos were provided for this movie.
         </h3>
       );
     }
@@ -94,6 +102,7 @@ class Details extends Component {
           <div className="preview-container">
             <h3 className="preview-header">Select a preview to watch:</h3>
             <div className="video-container">{this.displayEachVideo()}</div>
+            <ReactPlayer url="https://vimeo.com/436179361" />
           </div>
         </div>
         <div className="movie-body">
