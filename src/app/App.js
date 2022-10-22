@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { fetchAllMovies } from '../api.js';
 import Movies from '../movies/Movies';
 import Details from '../details/Details';
-import './App.css';
-import { fetchAllMovies } from '../api.js';
-import tomato from './tomato.png';
 import Search from '../searchForm/Search';
+import tomato from './tomato.png';
+import './App.css';
 
 class App extends Component {
   constructor() {
@@ -17,16 +17,18 @@ class App extends Component {
   }
 
   componentDidMount = async () => {
+    this.setState({ loading: true });
     try {
       const movieList = await fetchAllMovies();
       const data = await movieList.json();
-      this.setState({ movies: data.movies });
+      this.setState({ movies: data.movies, loading: false });
     } catch (error) {
       this.setState({
-        error: 'There was a problem getting your data. Please try again.',
+        error: 'There was a problem getting your movies. Please try again.',
       });
     }
   };
+
   searchMovie = (input) => {
     this.setState({ searchedMovie: input });
   };
@@ -34,8 +36,8 @@ class App extends Component {
   render() {
     return (
       <main>
+        <Search searchMovie={this.searchMovie} />
         <header className="header">
-          <Search searchMovie={this.searchMovie} />
           <div className="container">
             <h1 className="heading-title h1">Rancid</h1>
             <h2 className="heading-title h2">
@@ -45,16 +47,16 @@ class App extends Component {
               <img className="tomato-icon" src={tomato} alt="cartoon tomato" />s
             </h2>
           </div>
-          <div className="divider">
-            {!this.state.movies.length && (
-              <img
-                className="ball tomato-icon"
-                src={tomato}
-                alt="rolling tomato"
-              />
-            )}
-          </div>
         </header>
+        <div className="divider">
+          {!this.state.movies.length && (
+            <img
+              className="ball tomato-icon"
+              src={tomato}
+              alt="rolling tomato"
+            />
+          )}
+        </div>
         {this.state.error && (
           <h2 className="error-message">{this.state.error}</h2>
         )}
@@ -66,6 +68,7 @@ class App extends Component {
               <Movies
                 movies={this.state.movies}
                 searchedMovie={this.state.searchedMovie}
+                loading={this.state.loading}
               />
             )}
           />

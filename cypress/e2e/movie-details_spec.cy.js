@@ -1,28 +1,40 @@
 describe('Selected Movie Page flows', () => {
   beforeEach(() => {
-    cy.intercept('/api/v2/movies', {
-      fixture: 'data-snapshot.json',
-    });
+    cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+      fixture: 'all-movies-data.json',
+    }).as('movies');
 
     cy.visit('/');
   });
 
   it('Should show additional details about the selected movie', () => {
+    cy.intercept(
+      'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919',
+      {
+        fixture: '694919-movie-data.json',
+      }
+    ).as('money-plane');
+    cy.intercept(
+      'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919/videos',
+      {
+        fixture: '694919-video-data.json',
+      }
+    ).as('money-plane-videos');
     cy.get('[aria-label="Money Plane"]').click();
+
     cy.url().should('includes', '694919');
-    cy.get('.current-movie').within(() => {
-      cy.get('.inner-poster-img').should(
-        'have.attr',
-        'src',
-        'https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg'
-      );
-      cy.get('.movie-title').contains('Money Plane');
-      cy.get('.movie-rating').contains('6.88');
-      cy.get('.movie-release').contains('2020');
-      cy.get('.movie-runtime').contains('82 minutes');
-      cy.get('.movie-genre').contains('Action');
-      cy.get('.movie-overview').contains('professional thief');
-    });
+    cy.get('.inner-poster-img').should(
+      'have.attr',
+      'src',
+      'https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg'
+    );
+    cy.get('.preview-header').contains('Watch Previews');
+    cy.get('.movie-title').contains('Money Plane');
+    cy.get('.movie-rating').contains('6.88');
+    cy.get('.movie-release').contains('2020');
+    cy.get('.movie-runtime').contains('82 minutes');
+    cy.get('.movie-genre').contains('Action');
+    cy.get('.movie-overview').contains('professional thief');
   });
 
   it('Should return to main page when the close button is clicked', () => {
@@ -40,6 +52,25 @@ describe('Selected Movie Page flows', () => {
 
   it('Should return a message if a movie detail is missing', () => {
     cy.visit('/737799');
-    cy.get('[class="movie-overview"]').contains('Info is pending');
+    cy.get('.movie-overview').contains('Info is pending');
+  });
+
+  it('Should return a message if there are no videos provided to preview', () => {
+    cy.visit('/737799');
+    cy.get('.video-message').contains(
+      'Sorry, no videos were provided for this movie.'
+    );
+  });
+
+  it('Should still display the movie details even when the videos cannot be retrieved and have a message for the user', () => {
+    cy.intercept(
+      'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919/videos',
+      {
+        forceNetworkError: true,
+      }
+    ).as('video-block');
+    cy.visit('/694919');
+    cy.get('.movie-title').should('be.visible');
+    cy.get('.video-message').contains('Sorry, could not retrieve videos.');
   });
 });

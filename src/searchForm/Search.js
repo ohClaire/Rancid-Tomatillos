@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Search.css';
 
 class Search extends Component {
   constructor(props) {
@@ -21,13 +22,14 @@ class Search extends Component {
             this.props.searchMovie(this.state.search);
           }}
         >
-          <label htmlFor="search-bar"></label>
           <input
             className="search-input"
             type="text"
             placeholder="Search Movie Here"
-            name="search-bar"
+            name="search"
+            aria-label="Search"
             onChange={this.handleChange}
+            required
           />
           <button className="search-button">🔍</button>
         </form>
