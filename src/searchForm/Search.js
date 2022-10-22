@@ -29,6 +29,7 @@ class Search extends Component {
             name="search"
             aria-label="Search"
             onChange={this.handleChange}
+            required
           />
           <button className="search-button">🔍</button>
         </form>
