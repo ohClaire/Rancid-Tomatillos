@@ -1,17 +1,11 @@
 describe('Error Messaging Flows', () => {
-  it('Should show error when all movies cannot be displayed', () => {
-    cy.intercept(
-      {
-        method: 'GET',
-        url: '/api/v2/movies',
-      },
-      {
-        forceNetworkError: true,
-      }
-    );
+  it('Should show error when all movies cannot be retrieved', () => {
+    cy.intercept('/api/v2/movies', {
+      forceNetworkError: true,
+    });
     cy.visit('/');
     cy.get('[class="error-message"]').contains(
-      'There was a problem getting your data. Please try again.'
+      'There was a problem getting your movies. Please try again.'
     );
   });
 

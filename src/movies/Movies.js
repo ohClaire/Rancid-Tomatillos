@@ -4,6 +4,7 @@ import Card from '../card/Card';
 
 const Movies = ({ movies, searchedMovie }) => {
   let movieCards;
+
   if (searchedMovie !== '') {
     movieCards = movies.filter((movie) =>
       movie.title.toLowerCase().includes(searchedMovie.toLowerCase())
@@ -11,6 +12,7 @@ const Movies = ({ movies, searchedMovie }) => {
   } else {
     movieCards = movies;
   }
+
   const displayedMovies = movieCards.map((movie) => {
     return (
       <Card
@@ -22,9 +24,17 @@ const Movies = ({ movies, searchedMovie }) => {
     );
   });
 
+  const validateSearch = () => {
+    if (searchedMovie === '') {
+      return null;
+    } else {
+      return 'Sorry No Movies Found';
+    }
+  };
+
   return (
     <div className="movies-container">
-      {displayedMovies.length ? displayedMovies : 'Sorry No Movies Found'}
+      {displayedMovies.length ? displayedMovies : validateSearch()}
     </div>
   );
 };

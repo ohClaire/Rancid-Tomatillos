@@ -40,7 +40,6 @@ class Details extends Component {
   };
 
   displayEachVideo = () => {
-    console.log(this.state.videoUrl.length);
     if (this.state.videoUrl.length > 0) {
       return this.state.videoUrl.map((video) => {
         return video.site === 'YouTube' ? (

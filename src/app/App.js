@@ -17,16 +17,18 @@ class App extends Component {
   }
 
   componentDidMount = async () => {
+    this.setState({ loading: true });
     try {
       const movieList = await fetchAllMovies();
       const data = await movieList.json();
-      this.setState({ movies: data.movies });
+      this.setState({ movies: data.movies, loading: false });
     } catch (error) {
       this.setState({
-        error: 'There was a problem getting your data. Please try again.',
+        error: 'There was a problem getting your movies. Please try again.',
       });
     }
   };
+
   searchMovie = (input) => {
     this.setState({ searchedMovie: input });
   };
@@ -55,7 +57,6 @@ class App extends Component {
             />
           )}
         </div>
-        {/* <div className="content-container"> */}
         {this.state.error && (
           <h2 className="error-message">{this.state.error}</h2>
         )}
@@ -67,6 +68,7 @@ class App extends Component {
               <Movies
                 movies={this.state.movies}
                 searchedMovie={this.state.searchedMovie}
+                loading={this.state.loading}
               />
             )}
           />
@@ -78,7 +80,6 @@ class App extends Component {
             }}
           />
         </Switch>
-        {/* </div> */}
       </main>
     );
   }
