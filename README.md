@@ -9,7 +9,7 @@
     Browse and choose from a selection of movies 
   </h4>
 
-Rancid Tomatillos provides a selection of movies released between 2019-2020to for you to choose from. Select a movie to see previews and read more information about the movie. You can also search for a specific movie you're interested in while on our main page.
+Rancid Tomatillos provides a selection of movies released between 2019-2020 for you to choose from. Select a movie to see previews and read more information about the movie. You can also search for a specific movie you're interested in while on our main page.
 
 ## Table of Contents
 - [Overview](#Overview)
@@ -88,11 +88,11 @@ Hazel Pablo - pablohj08@gmail.com - [LinkedIn](https://www.linkedin.com/in/hazel
 
 ## Wins and Challenges
 
-### Wins
+### Wins 
 
 * 
 
-### Challenges
+### Challenges 
 
 * 
 
