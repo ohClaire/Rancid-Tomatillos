@@ -17,10 +17,10 @@ Rancid Tomatillos provides a selection of movies released between 2019-2020to fo
 - [Technologies](#Technologies)
 - [Links](#Links)
 - [ScreenShots](#ScreenShots)
-- [Getting Started](#Getting Started)
+- [Getting Started](#GETTING-STARTED)
 - [Features](#Features)
 - [Contributors](#Contributors)
-- [Wins_and_Challenges](#Wins_and_Challenges)
+- [Wins and Challenges](#Wins-and-Challenges)
 - [Credits](#Credits)
 
 
@@ -86,7 +86,7 @@ This project was tested with [Cypress](https://docs.cypress.io/guides/getting-st
 Hannah Celemen - hcelemen@icloud.com - [LinkedIn](https://www.linkedin.com/in/hannah-celemen/) - [GitHub](https://github.com/ohClaire?tab=repositories) </br>
 Hazel Pablo - pablohj08@gmail.com - [LinkedIn](https://www.linkedin.com/in/hazel-pablo-704779245/) - [GitHub](https://github.com/Hpablo08)
 
-## Wins_and_Challenges
+## Wins and Challenges
 
 ### Wins
 
