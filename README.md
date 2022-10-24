@@ -18,7 +18,6 @@ Rancid Tomatillos provides a selection of movies released between 2019-2020 for 
 - [Links](#Links)
 - [ScreenShots](#ScreenShots)
 - [Getting Started](#GETTING-STARTED)
-- [Features](#Features)
 - [Contributors](#Contributors)
 - [Wins and Challenges](#Wins-and-Challenges)
 - [Credits](#Credits)
@@ -33,8 +32,12 @@ This was a paired collaboration assigned in week 14 of the Turing School of Soft
 * Test React components & asynchronous JS with Cypress
 * Practicing refactoring 
 
-## Highlights:
+## Features:
 
+* Search bar at the top right corner of the page to filter through movies using iterator methods
+* Used React Router to change views from main page and movie details page
+* Made network requests to a RESTful API for data on our movie details and preview videos.
+* Tested the different browser pages with Cypress, while also stubbing and intercepting network requests.
 * Accessibility: app is fully _tabbable_, and scored 100% on both Lighthouse and WAVE audits
 * Loading page has an animated rolling tomato 
 
@@ -46,20 +49,13 @@ This was a paired collaboration assigned in week 14 of the Turing School of Soft
 ![Cypress](https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white)
 
 ## Links
-
 Deployed Project: [rancid-tomatillos](https://rancid-tomatillos-rose.vercel.app/)
-
-## Screenshots
-
-| Desktop View | Mobile View |
-|---------------|-----------------|
-<img src="" width=100%>|<p align="center"><br/><img src="" width=77%></p>
 
 ### Videos
 
-| Desktop View | Mobile View |
+| Main Page View | Error Page View |
 |---------------|-----------------|
-<img src="" width=100%>|<p align="center"><br/><img src="" width=77%></p>
+<img src="https://media.giphy.com/media/DcMRAalKTP7JwWv1OR/giphy.gif" width=100%>|<p align="center"><br/><img src="https://media.giphy.com/media/S6NrhQt55hKast3noB/giphy.gif" width=100%></p>
 
 ## GETTING STARTED
 
@@ -70,6 +66,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 3. cd into the root of the project directory
 4. Run `npm install`
 5. To verify that it is setup correctly, run `npm start` in your terminal to start the local server. This runs the app in the development mode. Open http://localhost:3000 to view it in your browser.
+6. Open your favorite code editor and go to the `package.json` file to check that you have installed the required dependencies: `react-router-dom`, `react-youtube`, `@u-wave/react-vimeo`
 6. See the section about [deployment](https://create-react-app.dev/docs/deployment/) for more information.
 7. Enter `Ctrl + C` in your terminal to stop the local server at any time.
 
@@ -77,9 +74,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This project was tested with [Cypress](https://docs.cypress.io/guides/getting-started/installing-cypress#Installing)
 1. cd into this project
 2. Run `npm run cypress`
-
-## Features
-
 
 ## Contributors
 
@@ -89,16 +83,16 @@ Hazel Pablo - pablohj08@gmail.com - [LinkedIn](https://www.linkedin.com/in/hazel
 ## Wins and Challenges
 
 ### Wins 
-
-* 
+* Learning React Router 
+* Cypress E2E testing
+* Displaying the preview videos using third-party libraries
+* Error handling messages 
 
 ### Challenges 
-
-* 
+* Intercepting and stubbing in Cypress. 
 
 ### Future Directions
-
-* 
+* Some of our movie details page has extra space between our preview videos and movie details. We would like to make this page more responsive so the extra space only occurs when the page size is too small to fit the grid display.
 
 ## Credits
 Tomato-icon.png by Hannah Celemen
